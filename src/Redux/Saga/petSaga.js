@@ -32,19 +32,19 @@ const fakePets = [{
 
 function* fetchPetsSaga() {
     try {
-        // let pets = yield axios.get('/pets');
-        
+        let pets = yield axios.get('/pets');
+
         yield put({
             type: 'SET_PETS',
             // payload: pets.data
-            payload: fakePets
+            payload: pets.data
         })
-        
+
     } catch (error) {
         console.log('error in fetchPetsSaga', error);
-        
+
     }
-} 
+}
 
 function* petSaga() {
     yield takeLatest('FETCH_PETS', fetchPetsSaga);
