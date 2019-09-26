@@ -6,8 +6,18 @@ class AddPetForm extends Component {
         petName: '',
         color: '',
         breed: '',
-        ownerId: ''
+        ownerId: 0
     }
+
+    componentDidMount() {
+        this.getOwners();
+    }
+
+    getOwners = () => {
+        this.props.dispatch({
+            type: 'FETCH_OWNERS'
+        });
+    };
 
     handleNewPet = (event) => {
         event.preventDefault();
@@ -19,6 +29,11 @@ class AddPetForm extends Component {
     }
 
     render() {
+        let renderDropdown = this.props.reduxStore.ownerReducer.map((owner)=>{
+            return (
+                <option value={owner.id}>{owner.ownerName}</option>
+            )
+        })
         return (
             <form onSubmit={this.handleNewPet}>
                 <input placeholder='Pet Name' onChange={(event) => { this.handlePetInfo(event, 'petName') }}
@@ -28,9 +43,8 @@ class AddPetForm extends Component {
                 <input placeholder='Pet Breed' onChange={(event) => { this.handlePetInfo(event, 'breed') }}
                     value={this.state.breed} />
                 <select onChange={(event) => { this.handlePetInfo(event, 'ownerId') }}>
-                    <option>Choose Owner</option>
-                    <option value='1'>Aaron</option>
-                    <option value='2'>Alex</option>
+                    <option value={0}>Choose Owner</option>
+                    {renderDropdown}
                 </select>
                 <button type='submit' > Add Pet </button>
             </form>
@@ -38,4 +52,10 @@ class AddPetForm extends Component {
     }
 }
 
-export default connect()(AddPetForm);
+const mapStateToProps = reduxStore => {
+    return {
+        reduxStore
+    };
+};
+
+export default connect(mapStateToProps)(AddPetForm);

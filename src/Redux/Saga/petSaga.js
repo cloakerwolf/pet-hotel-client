@@ -16,9 +16,12 @@ function* fetchPetsSaga() {
     }
 }
 
-function* addPets(action) {
+function* addPet(action) {
     try {
         yield axios.post('/pets', action.payload);
+        yield put({
+            type: 'FETCH_PETS'
+        })
     } catch (error) {
         console.log('error in addPets', error);
     }
@@ -26,7 +29,7 @@ function* addPets(action) {
 
 function* petSaga() {
     yield takeLatest('FETCH_PETS', fetchPetsSaga);
-    yield takeLatest('ADD_PETS', addPets);
+    yield takeLatest('ADD_PET', addPet);
 }
 
 export default petSaga;
