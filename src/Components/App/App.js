@@ -8,8 +8,8 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
          Hotel
-         <Pets/>
         </header>
+        <Pets />
       </div>
     );
   }

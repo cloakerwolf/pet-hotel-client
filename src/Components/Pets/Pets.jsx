@@ -16,7 +16,7 @@ class Pets extends Component {
     render() {
         return (
             <div>
-                <h1>{JSON.stringify(this.reduxStore)}</h1>
+                <h1>{JSON.stringify(this.props.reduxStore)}</h1>
                 <h1>Pets</h1>
                 
             </div>

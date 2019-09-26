@@ -8,7 +8,7 @@ function* fetchOwnerSaga() {
 
         yield put({
             type: 'SET_OWNERS',
-            payload: owners.data
+            // payload: owners.data
         })
 
     } catch (error) {
