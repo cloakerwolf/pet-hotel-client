@@ -3,30 +3,30 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 const fakePets = [{
     id: 1,
-    owner: 'Aaron',
+    owner_id: 1,
     pet_name: 'Geronimo',
     breed: 'Tibetan Mastiff',
     color: 'orange',
-    status: true,
-    date: '09/22/19',
+    is_checked_in: true,
+    checked_in_date: '09/22/19',
 },
     {
     id: 2,
-    owner: "Chris",
+    owner_id: 4,
     pet_name: "Baba-Yaga",
     breed: "Australian Shepherd",
     color: "cookies and cream",
-    status: true,
-    date: '09/19/19'
+    is_checked_in: true,
+    checked_in_date: '09/19/19'
     },
     {
         id: 3,
-        owner: "Karl",
+        owner_id: 2,
         pet_name: "Jeff",
         breed: "rat",
         color: "brown",
-        status: true,
-        date: '09/22/19'
+        is_checked_in: true,
+        checked_in_date: '09/22/19'
     },
 ]
 
@@ -46,8 +46,17 @@ function* fetchPetsSaga() {
     }
 }
 
+function* addPets(action) {
+    try {
+        yield axios.post('/pets', action.payload);
+    } catch (error) {
+        console.log('error in addPets', error);
+    }
+}
+
 function* petSaga() {
     yield takeLatest('FETCH_PETS', fetchPetsSaga);
+    yield takeLatest('ADD_PETS', addPets);
 }
 
 export default petSaga;
