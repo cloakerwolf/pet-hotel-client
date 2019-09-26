@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import AddPetForm from '../AddPetForm/AddPetForm';
+import PetItem from '../PetItem/PetItem';
 
 class Pets extends Component {
 	state = {	
@@ -16,47 +17,18 @@ class Pets extends Component {
 		});
 	};
 
-	deletePet = (id) => {
-		console.log('clicked delete', id);
-		this.props.dispatch({
-			type: 'DELETE_PET',
-			payload: id
-		})
-	}
-
 	sortColumn = (property) => {
 		this.props.dispatch({type: `SORT_${property}`, payload: this.state.sortmode});
 		this.forceUpdate();
 		this.setState({sortmode: !this.state.sortmode});
 	}
 
-	changeStatus = (id) => {
-		this.props.dispatch({type: 'CHANGE_PET_STATUS', payload: id});
-	}
-
 	render() {
 		let renderRows = this.props.reduxStore.petReducer.map(pet => {
 			return (
-				<tr key={pet.id}>
-					<td>{pet.ownerName}</td>
-					<td>{pet.petName}</td>
-					<td>{pet.breed}</td>
-					<td>{pet.color}</td>
-					<td><img src={pet.url} alt={pet.petName}/></td>
-					<td>{pet.checkedInStatus ? pet.checkedInDate : 'Not In'}</td>
-					<td>
-						<button className="btn btn-info" onClick={() => this.deletePet(pet.id)}>Delete</button>
-						{pet.checkedInStatus ? 
-						(
-							<button className="btn btn-info" onClick={() => this.changeStatus(pet.id)}>Check Out</button>
-						) : (
-							<button className="btn btn-info" onClick={() => this.changeStatus(pet.id)}>Check In</button>
-						)}
-					</td>
-				</tr>
+				<PetItem key={pet.id} pet={pet}/>
 			);
 		});
-
 		return (
 			<div>
 				<h3 className="subHead">Pets</h3>
