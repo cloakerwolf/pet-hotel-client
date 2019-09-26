@@ -15,12 +15,15 @@ class Pets extends Component {
 	};
 
 	deletePet = (id) => {
-	    console.log('clicked delete', id);
-	    this.props.dispatch({
-	        type: 'DELETE_PET',
-	        payload: id
-	    })
+		console.log('clicked delete', id);
+		this.props.dispatch({
+			type: 'DELETE_PET',
+			payload: id
+		})
+	}
 
+	changeStatus = (id) => {
+		this.props.dispatch({type: 'CHANGE_PET_STATUS', payload: id});
 	}
 
 	render() {
@@ -34,10 +37,11 @@ class Pets extends Component {
 					<td>{pet.checkedInStatus ? pet.checkedInDate : 'no'}</td>
 					<td>
 						<button onClick={() => this.deletePet(pet.id)}>Delete</button>
-						{pet.checkedInStatus ? (
-							<button>Check Out</button>
+						{pet.checkedInStatus ? 
+						(
+							<button onClick={() => this.changeStatus(pet.id)}>Check Out</button>
 						) : (
-							<button>Check In</button>
+							<button onClick={() => this.changeStatus(pet.id)}>Check In</button>
 						)}
 					</td>
 				</tr>
@@ -55,7 +59,7 @@ class Pets extends Component {
 							<th>Breed</th>
 							<th>Color</th>
 							<th>Checked In Date</th>
-                            <th>Actions</th>
+							<th>Actions</th>
 						</tr>
 					</thead>
 					<tbody>{renderRows}</tbody>
