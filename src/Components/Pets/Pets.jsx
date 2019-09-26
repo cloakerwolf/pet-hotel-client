@@ -42,6 +42,7 @@ class Pets extends Component {
 					<td>{pet.petName}</td>
 					<td>{pet.breed}</td>
 					<td>{pet.color}</td>
+					<td><img src={pet.url} alt={pet.petName}/></td>
 					<td>{pet.checkedInStatus ? pet.checkedInDate : 'Not In'}</td>
 					<td>
 						<button className="btn btn-info" onClick={() => this.deletePet(pet.id)}>Delete</button>
@@ -68,6 +69,7 @@ class Pets extends Component {
 							<th onClick={() => { this.sortColumn('PETNAME') }}>Pet Name</th>
 							<th onClick={() => { this.sortColumn('BREED') }}>Breed</th>
 							<th onClick={() => { this.sortColumn('COLOR') }}>Color</th>
+							<th>Pet Photo</th>
 							<th onClick={() => { this.sortColumn('DATE') }}>Checked In Date</th>
 							<th>Actions</th>
 						</tr>
