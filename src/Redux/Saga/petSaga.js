@@ -26,7 +26,7 @@ function* addPet(action) {
     }
 }
 
-function* DeletePet(action) {
+function* deletePet(action) {
     try {
         let deletePet = yield axios.delete(`/pets/${action.payload}`);
         console.log('deletePet', deletePet.data);
@@ -35,15 +35,27 @@ function* DeletePet(action) {
             payload: deletePet.data
         })
     } catch (error) {
-        console.log('error in the DeletePet Saga', error);
+        console.log('error in the deletePet Saga', error);
 
+    }
+}
+
+function* patchPet(action) {
+    try {
+        yield axios.patch(`/pets/${action.payload}`);
+        yield put({
+            type: 'FETCH_PETS'
+        });
+    } catch (error) {
+        console.log('error in the patchPet Saga', error);
     }
 }
 
 function* petSaga() {
     yield takeLatest('FETCH_PETS', fetchPetsSaga);
     yield takeLatest('ADD_PET', addPet);
-    yield takeLatest('DELETE_PET', DeletePet);
+    yield takeLatest('DELETE_PET', deletePet);
+    yield takeLatest('CHANGE_PET_STATUS', patchPet);
 }
 
 export default petSaga;
