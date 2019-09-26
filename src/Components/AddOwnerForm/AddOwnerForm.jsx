@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 class AddOwnerForm extends Component {
 	state = {
-		owner_name: ''
+		ownerName: ''
 	};
 
 	handleNewOwner = event => {

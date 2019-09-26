@@ -14,23 +14,23 @@ class Pets extends Component {
 		});
 	};
 
-	// deleteOwner = (id) => {
-	//     console.log('clicked delete', id);
-	//     this.props.dispatch({
-	//         type: 'DELETE_OWNER',
-	//         payload: id
-	//     })
+	deleteOwner = (id) => {
+	    console.log('clicked delete', id);
+	    this.props.dispatch({
+	        type: 'DELETE_OWNER',
+	        payload: id
+	    })
 
-	// }
+	}
 
 	render() {
 		let renderRows = this.props.reduxStore.ownerReducer.map(owner => {
 			return (
-				<tr>
+				<tr key={owner.id}>
 					<td>{owner.ownerName}</td>
 					{/* <td>{owner.petCount}</td> */}
 					<td>
-						<button>Delete</button>
+                        <button onClick={() => this.deleteOwner(owner.id)}>Delete</button>
 					</td>
 				</tr>
 			);

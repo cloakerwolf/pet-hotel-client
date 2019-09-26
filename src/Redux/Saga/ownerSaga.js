@@ -28,9 +28,24 @@ function* addOwner(action) {
     }
 }
 
+function* DeleteOwner(action) {
+    try {
+        let deleteOwner = yield axios.delete(`/owner/${action.payload}`);
+        console.log('deleteOwner', deleteOwner.data);
+        yield put({
+            type: 'FETCH_OWNER',
+            payload: deleteOwner.data
+        })
+    } catch (error) {
+        console.log('error in the DeleteOwner Saga', error);
+
+    }
+}
+
 function* ownerSaga() {
     yield takeLatest('FETCH_OWNERS', fetchOwnerSaga);
     yield takeLatest('ADD_OWNER', addOwner);
+    yield takeLatest('DELETE_OWNER', DeleteOwner);
 }
 
 export default ownerSaga;

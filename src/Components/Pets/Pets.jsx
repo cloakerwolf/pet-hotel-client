@@ -14,26 +14,26 @@ class Pets extends Component {
 		});
 	};
 
-	// deletePet = (id) => {
-	//     console.log('clicked delete', id);
-	//     this.props.dispatch({
-	//         type: 'DELETE_PET',
-	//         payload: id
-	//     })
+	deletePet = (id) => {
+	    console.log('clicked delete', id);
+	    this.props.dispatch({
+	        type: 'DELETE_PET',
+	        payload: id
+	    })
 
-	// }
+	}
 
 	render() {
 		let renderRows = this.props.reduxStore.petReducer.map(pet => {
 			return (
-				<tr>
+				<tr key={pet.id}>
 					<td>{pet.ownerName}</td>
 					<td>{pet.petName}</td>
 					<td>{pet.breed}</td>
 					<td>{pet.color}</td>
 					<td>{pet.checkedInStatus ? pet.checkedInDate : 'no'}</td>
 					<td>
-						<button>Delete</button>
+						<button onClick={() => this.deletePet(pet.id)}>Delete</button>
 						{pet.checkedInStatus ? (
 							<button>Check Out</button>
 						) : (
