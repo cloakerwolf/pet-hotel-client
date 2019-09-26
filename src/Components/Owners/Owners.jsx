@@ -28,7 +28,7 @@ class Pets extends Component {
 			return (
 				<tr key={owner.id}>
 					<td>{owner.ownerName}</td>
-					{/* <td>{owner.petCount}</td> */}
+					<td>{owner.petCount}</td>
 					<td>
                         <button onClick={() => this.deleteOwner(owner.id)}>Delete</button>
 					</td>
@@ -43,7 +43,7 @@ class Pets extends Component {
 					<thead>
 						<tr>
 							<th>Owner Name</th>
-							{/* <th>Number of Pets</th> */}
+							<th>Number of Pets</th>
 							<th>Delete</th>
 						</tr>
 					</thead>
