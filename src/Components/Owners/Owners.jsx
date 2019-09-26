@@ -15,7 +15,10 @@ class Pets extends Component {
 	};
 
 	deleteOwner = (id) => {
-	    console.log('clicked delete', id);
+        console.log('clicked delete', id);
+        this.props.dispatch({
+            type: 'CLEAR_ERROR'
+        })
 	    this.props.dispatch({
 	        type: 'DELETE_OWNER',
 	        payload: id
@@ -49,6 +52,7 @@ class Pets extends Component {
 					</thead>
 					<tbody>{renderRows}</tbody>
 				</table>
+            {this.props.reduxStore.errorReducer}
 			</div>
 		);
 	}

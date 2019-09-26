@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import petReducer from './petReducer';
 import ownerReducer from './ownerReducer';
+import errorReducer from './errorsReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -11,6 +12,7 @@ import ownerReducer from './ownerReducer';
 const rootReducer = combineReducers({
     petReducer,
     ownerReducer,
+    errorReducer,
 });
 
 export default rootReducer;
