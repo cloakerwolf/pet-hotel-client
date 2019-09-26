@@ -49,7 +49,12 @@ function* DeleteOwner(action) {
         })
     } catch (error) {
         console.log('error in the DeleteOwner Saga', error);
-
+        if (error.response.status === 500) {
+            // The 401 is the error status sent from passport
+            // if user isn't in the database or
+            // if the username and password don't match in the database
+            yield put({ type: 'DELETE_FAILED' });
+        } 
     }
 }
 
