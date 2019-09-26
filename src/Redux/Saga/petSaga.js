@@ -53,7 +53,7 @@ function* patchPet(action) {
 
 function* editPet(action) { // put route to edit pet details
     try {
-        yield axios.put(`/pets/check/${action.payload.id}`, action.payload)
+        yield axios.put(`/pets/edit/${action.payload.id}`, action.payload)
         yield put({
             type: 'FETCH_PETS'
         })

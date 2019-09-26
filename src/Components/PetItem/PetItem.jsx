@@ -8,6 +8,7 @@ class PetItem extends Component {
         id: 0,
         petName: '',
         ownerId: 0,
+        url: '',
         breed: '',
         color: ''
     }
@@ -19,6 +20,7 @@ class PetItem extends Component {
             id: this.props.pet.id,
             petName: this.props.pet.petName,
             ownerId: this.props.pet.ownerId,
+            url: this.props.pet.url,
             breed: this.props.pet.breed,
             color: this.props.pet.color
         })
@@ -76,7 +78,8 @@ class PetItem extends Component {
                 <td><select value={this.state.ownerId} onChange={(event) => { this.handlePetEdit(event,'ownerId')}}>{renderDropdown}</select></td>
                 <td><input value={this.state.petName} onChange={(event) => { this.handlePetEdit(event, 'petName')}}/></td>
                 <td><input value={this.state.breed} onChange={(event) => { this.handlePetEdit(event, 'breed')}}/></td>
-                <td><input value={this.state.color} onChange={(event) => { this.handlePetEdit(event, 'color')}}/></td>
+                <td><input value={this.state.color} onChange={(event) => { this.handlePetEdit(event, 'color') }} /></td>
+                <td><img src={this.state.url}/></td>
                 <td>{this.state.checkedInStatus ? this.state.checkedInDate : 'Not In'}</td>
             <td>
                     <button className="btn btn-info" onClick={() => this.saveChanges(this.state.id)}>Save Changes</button>
@@ -95,6 +98,7 @@ class PetItem extends Component {
                 <td>{this.props.pet.petName}</td>
                 <td>{this.props.pet.breed}</td>
                 <td>{this.props.pet.color}</td>
+                <td><img src={this.state.url}/></td>
                 <td>{this.props.pet.checkedInStatus ? this.props.pet.checkedInDate : 'Not In'}</td>
                 <td>
                     <button className="btn btn-info" onClick={() => this.editPet(this.props.pet.id)}>Edit</button>
@@ -106,9 +110,9 @@ class PetItem extends Component {
                             <button className="btn btn-info" onClick={() => this.changeStatus(this.props.pet.id)}>Check In</button>
                         )}
                 </td>
-            </tr>  )        
-            
-        
+            </tr>  )
+
+
     }
 }
 
