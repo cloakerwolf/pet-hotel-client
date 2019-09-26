@@ -26,9 +26,24 @@ function* addPet(action) {
     }
 }
 
+function* DeletePet(action) {
+    try {
+        let deletePet = yield axios.delete(`/pets/${action.payload}`);
+        console.log('deletePet', deletePet.data);
+        yield put({
+            type: 'FETCH_PETS',
+            payload: deletePet.data
+        })
+    } catch (error) {
+        console.log('error in the DeletePet Saga', error);
+
+    }
+}
+
 function* petSaga() {
     yield takeLatest('FETCH_PETS', fetchPetsSaga);
     yield takeLatest('ADD_PET', addPet);
+    yield takeLatest('DELETE_PET', DeletePet);
 }
 
 export default petSaga;
