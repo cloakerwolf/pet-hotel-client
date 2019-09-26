@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class AddPetForm extends Component {
     state = {
@@ -18,8 +19,6 @@ class AddPetForm extends Component {
     }
 
     render() {
-        // let ownerList = this.props.ownerList.map(owner => 
-        //     <option key={owner.id} value={owner.id}>{owner.ownerName}</option>);
         return (
             <form onSubmit={this.handleNewPet}>
                 <input placeholder='Pet Name' onChange={(event) => { this.handlePetInfo(event, 'petName') }}
@@ -31,7 +30,7 @@ class AddPetForm extends Component {
                 <select onChange={(event) => { this.handlePetInfo(event, 'ownerId') }}>
                     <option>Choose Owner</option>
                     <option value='1'>Aaron</option>
-                    <option value='2'>Alex</option> 
+                    <option value='2'>Alex</option>
                 </select>
                 <button type='submit' > Add Pet </button>
             </form>
@@ -39,4 +38,4 @@ class AddPetForm extends Component {
     }
 }
 
-export default AddPetForm;
+export default connect()(AddPetForm);
