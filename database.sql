@@ -4,7 +4,7 @@
 CREATE TABLE "owners"
 (
     "id" SERIAL PRIMARY KEY,
-    "owner_name" TEXT
+    "owner_name" TEXT NOT NULL
 );
 
 CREATE TABLE "pets"
