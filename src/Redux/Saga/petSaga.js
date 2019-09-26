@@ -22,7 +22,7 @@ function* addPet(action) {
             type: 'FETCH_PETS'
         })
     } catch (error) {
-        console.log('error in addPets', error);
+        console.log('error in addPet', error);
     }
 }
 

@@ -16,6 +16,7 @@ class AddOwnerForm extends Component {
 	};
 
 	render() {
+		console.log(this.state)
 		return (
 			<form onSubmit={this.handleNewOwner}>
 				<input
