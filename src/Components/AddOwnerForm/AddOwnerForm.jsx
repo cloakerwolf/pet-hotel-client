@@ -6,7 +6,7 @@ class AddOwnerForm extends Component {
 		owner_name: ''
 	};
 
-	handleNewPet = event => {
+	handleNewOwner = event => {
 		event.preventDefault();
 		this.props.dispatch({ type: 'ADD_OWNER', payload: this.state });
 	};
@@ -17,7 +17,7 @@ class AddOwnerForm extends Component {
 
 	render() {
 		return (
-			<form onSubmit={this.handleNewPet}>
+			<form onSubmit={this.handleNewOwner}>
 				<input
 					placeholder='Owner Name'
 					onChange={this.handleInput}

@@ -4,7 +4,6 @@ import { put, takeLatest } from 'redux-saga/effects';
 function* fetchPetsSaga() {
     try {
         let pets = yield axios.get('/pets');
-
         yield put({
             type: 'SET_PETS',
             payload: pets.data

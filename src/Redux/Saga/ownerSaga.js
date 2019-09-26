@@ -19,6 +19,7 @@ function* fetchOwnerSaga() {
 
 function* ownerSaga() {
     yield takeLatest('FETCH_OWNERS', fetchOwnerSaga);
+    yield takeLatest('ADD_OWNER', addOwner);
 }
 
 export default ownerSaga;
