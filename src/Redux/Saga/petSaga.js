@@ -42,7 +42,7 @@ function* deletePet(action) {
 
 function* patchPet(action) {
     try {
-        yield axios.patch(`/pets/${action.payload}`);
+        yield axios.patch(`/pets/check/${action.payload}`);
         yield put({
             type: 'FETCH_PETS'
         });
