@@ -56,7 +56,7 @@ class AddPetForm extends Component {
                     <option value={0}>Choose Owner</option>
                     {renderDropdown}
                 </select>
-                <button type='submit' > Add Pet </button>
+                <button className="btn btn-info" type='submit' > Add Pet </button>
             </form>
         );
     }

@@ -44,12 +44,12 @@ class Pets extends Component {
 					<td>{pet.color}</td>
 					<td>{pet.checkedInStatus ? pet.checkedInDate : 'Not In'}</td>
 					<td>
-						<button onClick={() => this.deletePet(pet.id)}>Delete</button>
+						<button className="btn btn-info" onClick={() => this.deletePet(pet.id)}>Delete</button>
 						{pet.checkedInStatus ? 
 						(
-							<button onClick={() => this.changeStatus(pet.id)}>Check Out</button>
+							<button className="btn btn-info" onClick={() => this.changeStatus(pet.id)}>Check Out</button>
 						) : (
-							<button onClick={() => this.changeStatus(pet.id)}>Check In</button>
+							<button className="btn btn-info" onClick={() => this.changeStatus(pet.id)}>Check In</button>
 						)}
 					</td>
 				</tr>
@@ -58,10 +58,11 @@ class Pets extends Component {
 
 		return (
 			<div>
-				<h1>Pets</h1>
+				<h3 className="subHead">Pets</h3>
 				<AddPetForm />
-				<table>
-					<thead>
+				<br/>
+				<table className="table table-striped">
+					<thead className="thead-dark">
 						<tr>
 							<th onClick={() => { this.sortColumn('OWNERNAME') }}>Owner Name</th>
 							<th onClick={() => { this.sortColumn('PETNAME') }}>Pet Name</th>

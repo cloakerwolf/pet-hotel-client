@@ -30,17 +30,18 @@ class Pets extends Component {
 					<td>{owner.ownerName}</td>
 					<td>{owner.petCount}</td>
 					<td>
-                        <button onClick={() => this.deleteOwner(owner.id)}>Delete</button>
+						<button className="btn btn-info" onClick={() => this.deleteOwner(owner.id)}>Delete</button>
 					</td>
 				</tr>
 			);
 		});
 		return (
 			<div>
-				<h1>Owners</h1>
+				<h3 className="subHead">Owners</h3>
 				<AddOwnerForm />
-				<table>
-					<thead>
+				<br/>
+				<table className="table table-striped">
+					<thead className="thead-dark">
 						<tr>
 							<th>Owner Name</th>
 							<th>Number of Pets</th>
