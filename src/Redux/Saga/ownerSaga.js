@@ -30,10 +30,10 @@ function* addOwner(action) {
 
 function* DeleteOwner(action) {
     try {
-        let deleteOwner = yield axios.delete(`/owner/${action.payload}`);
+        let deleteOwner = yield axios.delete(`/owners/${action.payload}`);
         console.log('deleteOwner', deleteOwner.data);
         yield put({
-            type: 'FETCH_OWNER',
+            type: 'FETCH_OWNERS',
             payload: deleteOwner.data
         })
     } catch (error) {
