@@ -28,6 +28,17 @@ function* addOwner(action) {
     }
 }
 
+function* editOwner(action) {
+    try {
+        yield axios.put(`/owners/edit/${action.payload.id}`, action.payload)
+        yield put({
+            type: 'FETCH_OWNERS'
+        })
+    } catch (error) {
+         console.log('error in editing owner information saga: ', error)
+    }
+}
+
 function* DeleteOwner(action) {
     try {
         let deleteOwner = yield axios.delete(`/owners/${action.payload}`);
@@ -50,6 +61,7 @@ function* DeleteOwner(action) {
 function* ownerSaga() {
     yield takeLatest('FETCH_OWNERS', fetchOwnerSaga);
     yield takeLatest('ADD_OWNER', addOwner);
+    yield takeLatest('EDIT_OWNER', editOwner)
     yield takeLatest('DELETE_OWNER', DeleteOwner);
 }
 

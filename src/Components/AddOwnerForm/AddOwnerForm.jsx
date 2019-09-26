@@ -24,7 +24,7 @@ class AddOwnerForm extends Component {
 					onChange={this.handleInput}
 					value={this.state.ownerName}
 				/>
-				<button type='submit'> Add Owner </button>
+				<button className="btn btn-info" type='submit'> Add Owner </button>
 			</form>
 		);
 	}
