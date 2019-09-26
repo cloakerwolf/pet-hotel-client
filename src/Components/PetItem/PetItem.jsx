@@ -35,7 +35,7 @@ class PetItem extends Component {
     editPet = ()=>{
         this.setState({
             ...this.state,
-            isEditMode: true
+            isEditMode: !this.state.isEditMode
         })
     }
 
@@ -83,6 +83,7 @@ class PetItem extends Component {
                 <td>{this.state.checkedInStatus ? this.state.checkedInDate : 'Not In'}</td>
             <td>
                     <button className="btn btn-info" onClick={() => this.saveChanges(this.state.id)}>Save Changes</button>
+                    <button className="btn btn-info" onClick={() => this.editPet()}>Cancel</button>
                     <button className="btn btn-info" onClick={() => this.deletePet(this.state.id)}>Delete</button>
                     {this.state.checkedInStatus ?
                     (
