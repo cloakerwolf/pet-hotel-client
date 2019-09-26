@@ -26,6 +26,12 @@ class Pets extends Component {
 
 	}
 
+    deleteError = () => {
+        this.props.dispatch({
+            type: 'CLEAR_ERROR'
+        })
+    }
+
 	render() {
 		let renderRows = this.props.reduxStore.ownerReducer.map(owner => {
 			return (
@@ -53,7 +59,7 @@ class Pets extends Component {
 					</thead>
 					<tbody>{renderRows}</tbody>
 				</table>
-            {this.props.reduxStore.errorReducer}
+                <p onClick={this.deleteError}>{this.props.reduxStore.errorReducer}</p>
 			</div>
 		);
 	}
