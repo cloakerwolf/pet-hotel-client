@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 class AddOwnerForm extends Component {
 	state = {
-		owner_name: ''
+		ownerName: ''
 	};
 
 	handleNewOwner = event => {
@@ -12,7 +12,7 @@ class AddOwnerForm extends Component {
 	};
 
 	handleInput = event => {
-		this.setState({ owner_name: event.target.value });
+		this.setState({ ownerName: event.target.value });
 	};
 
 	render() {
@@ -22,7 +22,7 @@ class AddOwnerForm extends Component {
 				<input
 					placeholder='Owner Name'
 					onChange={this.handleInput}
-					value={this.state.owner_name}
+					value={this.state.ownerName}
 				/>
 				<button type='submit'> Add Owner </button>
 			</form>

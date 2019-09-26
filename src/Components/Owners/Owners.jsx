@@ -26,9 +26,9 @@ class Pets extends Component {
 	render() {
 		let renderRows = this.props.reduxStore.ownerReducer.map(owner => {
 			return (
-				<tr>
+				<tr key={owner.id}>
 					<td>{owner.ownerName}</td>
-					{/* <td>{owner.petCount}</td> */}
+					<td>{owner.petCount}</td>
 					<td>
 						<button>Delete</button>
 					</td>
@@ -43,7 +43,7 @@ class Pets extends Component {
 					<thead>
 						<tr>
 							<th>Owner Name</th>
-							{/* <th>Number of Pets</th> */}
+							<th>Number of Pets</th>
 							<th>Delete</th>
 						</tr>
 					</thead>

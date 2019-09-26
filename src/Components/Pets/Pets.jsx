@@ -26,7 +26,7 @@ class Pets extends Component {
 	render() {
 		let renderRows = this.props.reduxStore.petReducer.map(pet => {
 			return (
-				<tr>
+				<tr key={pet.id}>
 					<td>{pet.ownerName}</td>
 					<td>{pet.petName}</td>
 					<td>{pet.breed}</td>

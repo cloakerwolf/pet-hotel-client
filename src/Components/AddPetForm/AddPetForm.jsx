@@ -32,7 +32,7 @@ class AddPetForm extends Component {
         console.log(this.state)
         let renderDropdown = this.props.reduxStore.ownerReducer.map((owner)=>{
             return (
-                <option value={owner.id}>{owner.ownerName}</option>
+                <option key={owner.id} value={owner.id}>{owner.ownerName}</option>
             )
         })//note: owner_id is coming in as a string!
         return (

@@ -12,7 +12,7 @@ function* fetchOwnerSaga() {
         })
 
     } catch (error) {
-        console.log('error in fetchOwnersSaga', error);
+        console.log('error in fetchOwnerSaga', error);
 
     }
 }
