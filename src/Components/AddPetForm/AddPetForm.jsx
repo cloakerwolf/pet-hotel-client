@@ -50,8 +50,8 @@ class AddPetForm extends Component {
                     value={this.state.color} />
                 <input placeholder='Pet Breed' onChange={(event) => { this.handlePetInfo(event, 'breed') }}
                     value={this.state.breed} />
-                {/* <input placeholder='URL' onChange={(event) => { this.handlePetInfo(event, 'url') }}
-                    value={this.state.url} /> */}
+                <input placeholder='URL' onChange={(event) => { this.handlePetInfo(event, 'url') }}
+                    value={this.state.url} />
                 <select onChange={(event) => { this.handlePetInfo(event, 'ownerId') }}>
                     <option value={0}>Choose Owner</option>
                     {renderDropdown}

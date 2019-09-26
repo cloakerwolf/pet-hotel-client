@@ -51,6 +51,18 @@ function* patchPet(action) {
     }
 }
 
+function* editPet(action) { // put route to edit pet details
+    try {
+        yield axios.put(`/pets/check/${action.payload.id}`, action.payload)
+        yield put({
+            type: 'FETCH_PETS'
+        })
+    } catch (error) {
+        console.log('error in the edit pet saga: ', error)
+    }
+}
+
+
 function* sortDate() {
     try {
         let pets = yield axios.get('/pets/sortDate');
@@ -70,6 +82,7 @@ function* petSaga() {
     yield takeLatest('DELETE_PET', deletePet);
     yield takeLatest('CHANGE_PET_STATUS', patchPet);
     yield takeLatest('SORT_DATE', sortDate);
+    yield takeLatest('EDIT_PET', editPet)
 }
 
 export default petSaga;
