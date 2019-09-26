@@ -51,11 +51,25 @@ function* patchPet(action) {
     }
 }
 
+function* sortDate() {
+    try {
+        let pets = yield axios.get('/pets/sortDate');
+        yield put({
+            type: 'SET_PETS',
+            payload: pets.data
+        })
+
+    } catch (error) {
+        console.log('error in fetchPetsSaga', error);
+    }
+}
+
 function* petSaga() {
     yield takeLatest('FETCH_PETS', fetchPetsSaga);
     yield takeLatest('ADD_PET', addPet);
     yield takeLatest('DELETE_PET', deletePet);
     yield takeLatest('CHANGE_PET_STATUS', patchPet);
+    yield takeLatest('SORT_DATE', sortDate);
 }
 
 export default petSaga;

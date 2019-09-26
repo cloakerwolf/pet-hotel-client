@@ -6,6 +6,7 @@ class AddPetForm extends Component {
         petName: '',
         color: '',
         breed: '',
+        url: '',
         ownerId: 0
     }
 
@@ -22,6 +23,12 @@ class AddPetForm extends Component {
     handleNewPet = (event) => {
         event.preventDefault();
         this.props.dispatch({ type: 'ADD_PET', payload: this.state })
+        this.setState({
+            petName: '',
+            color: '',
+            breed: '',
+            url: '',
+            ownerId: 0});
     }
 
     handlePetInfo = (event, property) => {
@@ -43,6 +50,8 @@ class AddPetForm extends Component {
                     value={this.state.color} />
                 <input placeholder='Pet Breed' onChange={(event) => { this.handlePetInfo(event, 'breed') }}
                     value={this.state.breed} />
+                {/* <input placeholder='URL' onChange={(event) => { this.handlePetInfo(event, 'url') }}
+                    value={this.state.url} /> */}
                 <select onChange={(event) => { this.handlePetInfo(event, 'ownerId') }}>
                     <option value={0}>Choose Owner</option>
                     {renderDropdown}
