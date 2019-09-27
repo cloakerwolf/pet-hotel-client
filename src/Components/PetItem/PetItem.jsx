@@ -73,7 +73,7 @@ class PetItem extends Component {
             return (
                 <option key={owner.id} value={owner.id}>{owner.ownerName}</option>
             )
-        })//note: owner_id is coming in as a string!
+        })
         return this.state.isEditMode ? (
             <tr >
                 <td><select value={this.state.ownerId} onChange={(event) => { this.handlePetEdit(event,'ownerId')}}>{renderDropdown}</select></td>
@@ -100,7 +100,7 @@ class PetItem extends Component {
                 <td>{this.props.pet.petName}</td>
                 <td>{this.props.pet.breed}</td>
                 <td>{this.props.pet.color}</td>
-                <td><img src={this.state.url}/></td>
+                <td><img src={this.props.pet.url} alt={this.props.pet.petName}/></td>
                 <td>{this.props.pet.checkedInStatus ? this.props.pet.checkedInDate : 'Not In'}</td>
                 <td>
                     <button className="btn btn-info" onClick={() => this.editPet(this.props.pet.id)}>Edit</button>
