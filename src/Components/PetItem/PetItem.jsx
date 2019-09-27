@@ -48,6 +48,7 @@ class PetItem extends Component {
             type: 'EDIT_PET',
             payload: this.state
         })
+        this.editPet();
     }
 
     changeStatus = (id) => {
@@ -79,7 +80,7 @@ class PetItem extends Component {
                 <td><input value={this.state.petName} onChange={(event) => { this.handlePetEdit(event, 'petName')}}/></td>
                 <td><input value={this.state.breed} onChange={(event) => { this.handlePetEdit(event, 'breed')}}/></td>
                 <td><input value={this.state.color} onChange={(event) => { this.handlePetEdit(event, 'color') }} /></td>
-                <td><img src={this.state.url}/></td>
+                <td><input value={this.state.url} onChange={(event) => { this.handlePetEdit(event, 'url') }}/></td>
                 <td>{this.state.checkedInStatus ? this.state.checkedInDate : 'Not In'}</td>
             <td>
                     <button className="btn btn-info" onClick={() => this.saveChanges(this.state.id)}>Save Changes</button>
